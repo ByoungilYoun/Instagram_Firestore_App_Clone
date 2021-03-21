@@ -30,6 +30,59 @@ class FeedCell : UICollectionViewCell {
     return button
   }()
   
+  private let postImageView : UIImageView = {
+    let iv = UIImageView()
+    iv.contentMode = .scaleAspectFill
+    iv.clipsToBounds = true
+    iv.isUserInteractionEnabled = true
+    iv.image = #imageLiteral(resourceName: "venom-7")
+    return iv
+  }()
+  
+  private lazy var likeButton : UIButton = {
+    let button = UIButton(type: .system)
+    button.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
+    button.tintColor = .black
+    return button
+  }()
+  
+  private lazy var commentButton : UIButton = {
+    let button = UIButton(type: .system)
+    button.setImage(#imageLiteral(resourceName: "comment"), for: .normal)
+    button.tintColor = .black
+    return button
+  }()
+  
+  private lazy var shareButton : UIButton = {
+    let button = UIButton(type: .system)
+    button.setImage(#imageLiteral(resourceName: "send2"), for: .normal)
+    button.tintColor = .black
+    return button
+  }()
+  
+  private let likesLabel : UILabel = {
+    let label = UILabel()
+    label.text = "1 like"
+    label.font = UIFont.boldSystemFont(ofSize: 13)
+    return label
+  }()
+  
+  private let captionLabel : UILabel = {
+    let label = UILabel()
+    label.text = "Some test caption for now..."
+    label.font = UIFont.systemFont(ofSize: 14)
+    return label
+  }()
+  
+  private let postTimeLabel : UILabel = {
+    let label = UILabel()
+    label.text = "2 days ago"
+    label.font = UIFont.systemFont(ofSize: 12)
+    label.textColor = .lightGray
+    return label
+  }()
+  
+
   //MARK: - Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -44,19 +97,56 @@ class FeedCell : UICollectionViewCell {
   private func configureUI () {
     backgroundColor = .white
     
-    [profileImageView, userNameButton].forEach {
+    [profileImageView, userNameButton, postImageView, likesLabel, captionLabel, postTimeLabel].forEach {
       addSubview($0)
     }
     
     profileImageView.snp.makeConstraints {
-      $0.top.leading.equalToSuperview().inset(12) // inset 기준이 x,y 의 시작점
+      $0.top.leading.equalToSuperview().offset(12) // inset 기준이 x,y 의 시작점
       $0.height.width.equalTo(40)
     }
-    profileImageView.layer.cornerRadius = 40 / 2
+    profileImageView.layer.cornerRadius = 40 / 2 // profileImageView 둥글게 하기
     
     userNameButton.snp.makeConstraints {
       $0.centerY.equalTo(profileImageView)
-      $0.leading.equalTo(profileImageView.snp.trailing).inset(-8)
+      $0.leading.equalTo(profileImageView.snp.trailing).offset(8)
+    }
+    
+    postImageView.snp.makeConstraints {
+      $0.top.equalTo(profileImageView.snp.bottom).offset(8)
+      $0.leading.trailing.equalToSuperview()
+      $0.height.equalTo(self.snp.width).multipliedBy(1)
+    }
+    
+    configureActionButton() // postImageView 에 대한 constraint 속성을 다 해주고 해줘야 한다. (주의)
+    
+    likesLabel.snp.makeConstraints {
+      $0.top.equalTo(likeButton.snp.bottom).offset(4)
+      $0.leading.equalToSuperview().offset(8)
+    }
+    
+    captionLabel.snp.makeConstraints {
+      $0.top.equalTo(likesLabel.snp.bottom).offset(8)
+      $0.leading.equalToSuperview().offset(8)
+    }
+    
+    postTimeLabel.snp.makeConstraints {
+      $0.top.equalTo(captionLabel.snp.bottom).offset(8)
+      $0.leading.equalToSuperview().offset(8)
+    }
+  }
+  
+  // 스택뷰에 하트 버튼, 커멘트 버튼, share버튼 올려서 나타내주는 함수
+  func configureActionButton() {
+    let stackView = UIStackView(arrangedSubviews: [likeButton, commentButton, shareButton])
+    stackView.axis = .horizontal
+    stackView.distribution = .fillEqually
+    
+    addSubview(stackView)
+    stackView.snp.makeConstraints {
+      $0.top.equalTo(postImageView.snp.bottom)
+      $0.width.equalTo(120)
+      $0.height.equalTo(50)
     }
   }
   
