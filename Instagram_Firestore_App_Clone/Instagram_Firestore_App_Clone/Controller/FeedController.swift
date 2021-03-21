@@ -7,8 +7,6 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class FeedController : UICollectionViewController {
   
   //MARK: - Properties
@@ -22,7 +20,7 @@ class FeedController : UICollectionViewController {
   //MARK: - Helpers
   func configureUI() {
     collectionView.backgroundColor = .white
-    collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    collectionView.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.identifier)
   }
 }
 
@@ -33,8 +31,7 @@ extension FeedController {
   }
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    cell.backgroundColor = .red
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedCell.identifier, for: indexPath) as! FeedCell
     return cell
   }
 }

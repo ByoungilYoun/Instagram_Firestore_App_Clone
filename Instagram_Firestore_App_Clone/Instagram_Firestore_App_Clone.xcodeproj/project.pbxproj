@@ -20,6 +20,7 @@
 		0F5F9BAD26073C53003705B0 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F9BAC26073C53003705B0 /* NotificationsController.swift */; };
 		0F5F9BB026073C5A003705B0 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F9BAF26073C5A003705B0 /* ProfileController.swift */; };
 		0F5F9BB4260744C3003705B0 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0F5F9BB3260744C3003705B0 /* SnapKit */; };
+		0F5F9BB726074A31003705B0 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F9BB626074A31003705B0 /* FeedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		0F5F9BA926073C4B003705B0 /* ImageSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorController.swift; sourceTree = "<group>"; };
 		0F5F9BAC26073C53003705B0 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		0F5F9BAF26073C5A003705B0 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		0F5F9BB626074A31003705B0 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		0F5F9B9D26073A1B003705B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0F5F9BB626074A31003705B0 /* FeedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F5F9B892607399C003705B0 /* ViewController.swift in Sources */,
+				0F5F9BB726074A31003705B0 /* FeedCell.swift in Sources */,
 				0F5F9BAA26073C4B003705B0 /* ImageSelectorController.swift in Sources */,
 				0F5F9BA726073C3F003705B0 /* SearchController.swift in Sources */,
 				0F5F9B852607399C003705B0 /* AppDelegate.swift in Sources */,
