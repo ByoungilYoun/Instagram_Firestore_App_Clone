@@ -8,7 +8,6 @@
 import UIKit
 
 class LoginController : UIViewController {
-  
   //MARK: - Properties
   
   // Instagram 아이콘 이미지
@@ -37,9 +36,10 @@ class LoginController : UIViewController {
     let button = UIButton(type: .system)
     button.setTitle("Log In", for: .normal)
     button.setTitleColor(.white, for: .normal)
-    button.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+    button.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)
     button.layer.cornerRadius = 5
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+    button.isEnabled = false
     return button
   }()
   
@@ -57,13 +57,17 @@ class LoginController : UIViewController {
     button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
     return button
   }()
+  
+  // LoginViewModel 생성
+  private var viewModel = LoginViewModel()
+  
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setNavi()
     configureUI()
+    configureNotificationObservers()
   }
-  
   
   //MARK: - Helpers
   private func setNavi() {
@@ -108,9 +112,25 @@ class LoginController : UIViewController {
     }
   }
   
+  func configureNotificationObservers() {
+    emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+  }
   //MARK: - @objc func
   @objc func handleShowSignUp() {
     let controller = RegistrationController()
     navigationController?.pushViewController(controller, animated: true)
+  }
+  
+  @objc func textDidChange(sender : UITextField) {
+    if sender == emailTextField {
+      viewModel.email = sender.text
+    } else {
+      viewModel.password = sender.text
+    }
+    
+    loginButton.backgroundColor = viewModel.buttonBackgroundColor
+    loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+    loginButton.isEnabled = viewModel.formIsValid
   }
 }
