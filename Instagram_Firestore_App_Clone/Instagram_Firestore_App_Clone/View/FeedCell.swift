@@ -64,6 +64,7 @@ class FeedCell : UICollectionViewCell {
     let label = UILabel()
     label.text = "1 like"
     label.font = UIFont.boldSystemFont(ofSize: 13)
+    label.textColor = .black
     return label
   }()
   
@@ -71,6 +72,7 @@ class FeedCell : UICollectionViewCell {
     let label = UILabel()
     label.text = "Some test caption for now..."
     label.font = UIFont.systemFont(ofSize: 14)
+    label.textColor = .black
     return label
   }()
   
@@ -102,7 +104,7 @@ class FeedCell : UICollectionViewCell {
     }
     
     profileImageView.snp.makeConstraints {
-      $0.top.leading.equalToSuperview().offset(12) // inset 기준이 x,y 의 시작점
+      $0.top.leading.equalToSuperview().offset(12)
       $0.height.width.equalTo(40)
     }
     profileImageView.layer.cornerRadius = 40 / 2 // profileImageView 둥글게 하기
