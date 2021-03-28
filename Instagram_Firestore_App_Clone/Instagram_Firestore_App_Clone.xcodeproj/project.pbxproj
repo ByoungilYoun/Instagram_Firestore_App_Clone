@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0F53267B26104C780061D92E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F53267A26104C780061D92E /* LoginController.swift */; };
 		0F53267F26104C820061D92E /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F53267E26104C820061D92E /* RegistrationController.swift */; };
+		0F5326832610601B0061D92E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5326822610601B0061D92E /* CustomTextField.swift */; };
+		0F5326872610627C0061D92E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5326862610627C0061D92E /* Extensions.swift */; };
 		0F5F9B852607399C003705B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F9B842607399C003705B0 /* AppDelegate.swift */; };
 		0F5F9B872607399C003705B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F9B862607399C003705B0 /* SceneDelegate.swift */; };
 		0F5F9B892607399C003705B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F9B882607399C003705B0 /* ViewController.swift */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		0F53267A26104C780061D92E /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0F53267E26104C820061D92E /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		0F5326822610601B0061D92E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		0F5326862610627C0061D92E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0F5F9B812607399C003705B0 /* Instagram_Firestore_App_Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram_Firestore_App_Clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F5F9B842607399C003705B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F5F9B862607399C003705B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,7 @@
 		0F5F9B9926073A0E003705B0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0F5326862610627C0061D92E /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				0F5F9BB626074A31003705B0 /* FeedCell.swift */,
+				0F5326822610601B0061D92E /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F5326832610601B0061D92E /* CustomTextField.swift in Sources */,
 				0F53267B26104C780061D92E /* LoginController.swift in Sources */,
 				0F5F9B892607399C003705B0 /* ViewController.swift in Sources */,
 				0F5F9BB726074A31003705B0 /* FeedCell.swift in Sources */,
@@ -236,6 +243,7 @@
 				0F5F9B852607399C003705B0 /* AppDelegate.swift in Sources */,
 				0F5F9BA426073C2C003705B0 /* FeedController.swift in Sources */,
 				0F5F9BB026073C5A003705B0 /* ProfileController.swift in Sources */,
+				0F5326872610627C0061D92E /* Extensions.swift in Sources */,
 				0F5F9BA126073AAF003705B0 /* MainTabController.swift in Sources */,
 				0F5F9BAD26073C53003705B0 /* NotificationsController.swift in Sources */,
 				0F53267F26104C820061D92E /* RegistrationController.swift in Sources */,

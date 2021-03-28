@@ -19,26 +19,15 @@ class LoginController : UIViewController {
   }()
   
   // 이메일 텍스트 필드
-  private let emailTextField : UITextField = {
-    let tf = UITextField()
-    tf.borderStyle = .none
-    tf.textColor = .white
-    tf.keyboardAppearance = .dark
+  private let emailTextField : CustomTextField = {
+    let tf = CustomTextField(placeholder: "Email")
     tf.keyboardType = .emailAddress
-    tf.backgroundColor = UIColor(white: 1, alpha: 0.1)
-    tf.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [.foregroundColor : UIColor(white: 1, alpha: 0.7)])
     return tf
   }()
   
   // 패스워드 텍스트 필드
-  private let passwordTextField : UITextField = {
-    let tf = UITextField()
-    tf.borderStyle = .none
-    tf.textColor = .white
-    tf.keyboardAppearance = .dark
-    tf.keyboardType = .emailAddress
-    tf.backgroundColor = UIColor(white: 1, alpha: 0.1)
-    tf.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [.foregroundColor : UIColor(white: 1, alpha: 0.7)])
+  private let passwordTextField : CustomTextField = {
+    let tf = CustomTextField(placeholder: "Password")
     tf.isSecureTextEntry = true
     return tf
   }()
@@ -54,24 +43,17 @@ class LoginController : UIViewController {
     return button
   }()
   
+  // forgetPassword 버튼
   private let forgotPasswordButton : UIButton = {
     let button = UIButton(type: .system)
-    let atts : [NSAttributedString.Key : Any] = [.foregroundColor : UIColor(white: 1, alpha: 0.7), .font : UIFont.systemFont(ofSize: 16)]
-    let attributedTitle = NSMutableAttributedString(string: "Forgot your password?  ", attributes: atts)
-    let boldAtts : [NSAttributedString.Key : Any] = [.foregroundColor : UIColor(white: 1, alpha: 0.7), .font : UIFont.boldSystemFont(ofSize: 16)]
-    attributedTitle.append(NSAttributedString(string: "Get help signing in", attributes: boldAtts))
-    button.setAttributedTitle(attributedTitle, for: .normal)
+    button.attributedTitle(firstString: "Forgot your password?", secondString: "Get help signing in")
     return button
   }()
   
-  
+  // dontHaveAccount 버튼 
   private let dontHaveAccountButton : UIButton = {
     let button = UIButton(type: .system)
-    let atts : [NSAttributedString.Key : Any] = [.foregroundColor : UIColor(white: 1, alpha: 0.7), .font : UIFont.systemFont(ofSize: 16)]
-    let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: atts)
-    let boldAtts : [NSAttributedString.Key : Any] = [.foregroundColor : UIColor(white: 1, alpha: 0.7), .font : UIFont.boldSystemFont(ofSize: 16)]
-    attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: boldAtts))
-    button.setAttributedTitle(attributedTitle, for: .normal)
+    button.attributedTitle(firstString: "Don't have an account? ", secondString: "Sign Up")
     return button
   }()
   //MARK: - Lifecycle
@@ -84,7 +66,6 @@ class LoginController : UIViewController {
   
   //MARK: - Helpers
   private func setNavi() {
-    
     navigationController?.navigationBar.isHidden = true // 네비게이션 바 없애기
     navigationController?.navigationBar.barStyle = .black // 네비게이션 시간 보여지는 곳에 라이트 모드이거나 다크 모두 둘다 하얀색으로 나온다.
   }
