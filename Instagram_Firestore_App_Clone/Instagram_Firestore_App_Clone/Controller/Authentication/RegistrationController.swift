@@ -46,7 +46,9 @@ class RegistrationController : UIViewController {
     button.setTitleColor(.white, for: .normal)
     button.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)
     button.layer.cornerRadius = 5
+    button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+    button.isEnabled = false
     return button
   }()
   
@@ -60,6 +62,7 @@ class RegistrationController : UIViewController {
   
   private var viewModel = RegistrationViewModel() 
   
+  private var profileImage : UIImage?
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -137,6 +140,19 @@ class RegistrationController : UIViewController {
     
     present(picker, animated: true, completion: nil)
   }
+  
+  // 여기서 중요한거 textField의 text 는 항상 기본적으로 optional 이기 때문에 풀어주기 위해서 guard 문을 써준면 좋다.
+  @objc func handleSignUp() {
+    guard let email = emailTextField.text else {return}
+    guard let password = passwordTextField.text else {return}
+    guard let fullname = fullnameTextField.text else {return}
+    guard let username = usernameTextField.text else {return}
+    guard let profileImage = self.profileImage else {return} // self.profileImage 에서 self를 안붙여줘도 되지만 구별하기 위해 써준다.
+    
+    let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
+  
+    AuthService.registerUser(withCredentials: credentials)
+  }
 }
 
  //MARK: - extension FormViewModel
@@ -152,6 +168,8 @@ extension RegistrationController : FormViewModel {
 extension RegistrationController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     guard let selectedImage = info[.editedImage] as? UIImage else {return}
+    
+    profileImage = selectedImage // 위에 변수로 profileImage 를 옵셔널로 만들고 이미지 피커 컨트롤로 이미지를 선택했을때 그 이미지를 profileImage 변수에 넣어준다.
     
     plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
     plusPhotoButton.layer.masksToBounds = true
