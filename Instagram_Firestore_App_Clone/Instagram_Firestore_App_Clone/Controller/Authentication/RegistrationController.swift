@@ -146,12 +146,18 @@ class RegistrationController : UIViewController {
     guard let email = emailTextField.text else {return}
     guard let password = passwordTextField.text else {return}
     guard let fullname = fullnameTextField.text else {return}
-    guard let username = usernameTextField.text else {return}
+    guard let username = usernameTextField.text?.lowercased() else {return}
     guard let profileImage = self.profileImage else {return} // self.profileImage 에서 self를 안붙여줘도 되지만 구별하기 위해 써준다.
     
     let credentials = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
   
-    AuthService.registerUser(withCredentials: credentials)
+    AuthService.registerUser(withCredentials: credentials) { error in
+      if let error = error {
+        print("Debug : Failed to register user : \(error.localizedDescription)")
+        return
+      }
+      print("Debug : Successfully registered user with firestore")
+    }
   }
 }
 
