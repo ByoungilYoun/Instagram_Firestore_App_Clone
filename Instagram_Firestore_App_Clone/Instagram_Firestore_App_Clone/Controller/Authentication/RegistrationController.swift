@@ -156,7 +156,7 @@ class RegistrationController : UIViewController {
         print("Debug : Failed to register user : \(error.localizedDescription)")
         return
       }
-      print("Debug : Successfully registered user with firestore")
+      self.dismiss(animated: true, completion: nil)
     }
   }
 }
