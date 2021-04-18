@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileHeader : UICollectionReusableView {
   
@@ -14,15 +15,14 @@ class ProfileHeader : UICollectionReusableView {
   
   private let profileImageView : UIImageView = {
     let iv = UIImageView()
-    iv.image = #imageLiteral(resourceName: "venom-7")
     iv.contentMode = .scaleAspectFill
     iv.clipsToBounds = true
+    iv.backgroundColor = .lightGray
     return iv
   }()
   
   private let nameLabel : UILabel = {
     let lb = UILabel()
-    lb.text = "Eddie Brock"
     lb.textColor = .black
     lb.font = UIFont.boldSystemFont(ofSize: 14)
     return lb
@@ -83,6 +83,12 @@ class ProfileHeader : UICollectionReusableView {
     button.tintColor = UIColor(white: 0, alpha: 0.2)
     return button
   }()
+  
+  var viewModel : ProfileHeaderViewModel? {
+    didSet {
+      configure()
+    }
+  }
   //MARK: - Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -166,6 +172,13 @@ class ProfileHeader : UICollectionReusableView {
     let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font : UIFont.boldSystemFont(ofSize: 14), .foregroundColor : UIColor.black])
     attributedText.append(NSAttributedString(string: label, attributes: [.font : UIFont.systemFont(ofSize: 14), .foregroundColor : UIColor.lightGray]))
     return attributedText
+  }
+  
+  func configure() {
+    guard let viewModel = viewModel else {return}
+    
+    nameLabel.text = viewModel.fullname
+    profileImageView.sd_setImage(with: viewModel.profileImageUrl)
   }
   
   //MARK: - @objc func
