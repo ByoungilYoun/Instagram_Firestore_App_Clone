@@ -31,6 +31,9 @@
 		0F8BDAFD2622D168005E7D35 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BDAFC2622D168005E7D35 /* ProfileHeader.swift */; };
 		0F9D00412618564000465BC3 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D00402618564000465BC3 /* ImageUploader.swift */; };
 		0F9D00442618565000465BC3 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D00432618565000465BC3 /* AuthService.swift */; };
+		0FF63A42262C032200972E24 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF63A41262C032200972E24 /* UserService.swift */; };
+		0FF63A45262C036000972E24 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF63A44262C036000972E24 /* Constants.swift */; };
+		0FF63A48262C05CD00972E24 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF63A47262C05CD00972E24 /* User.swift */; };
 		C158D883FFB0B4A0861DEA92 /* Pods_Instagram_Firestore_App_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927BC41650A22EE561FAF9C5 /* Pods_Instagram_Firestore_App_Clone.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +63,9 @@
 		0F8BDAFC2622D168005E7D35 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		0F9D00402618564000465BC3 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		0F9D00432618565000465BC3 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		0FF63A41262C032200972E24 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		0FF63A44262C036000972E24 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0FF63A47262C05CD00972E24 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		316E85700D24DAF7E8B5287B /* Pods-Instagram_Firestore_App_Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram_Firestore_App_Clone.debug.xcconfig"; path = "Target Support Files/Pods-Instagram_Firestore_App_Clone/Pods-Instagram_Firestore_App_Clone.debug.xcconfig"; sourceTree = "<group>"; };
 		4E689D1D08D7A16982489716 /* Pods-Instagram_Firestore_App_Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram_Firestore_App_Clone.release.xcconfig"; path = "Target Support Files/Pods-Instagram_Firestore_App_Clone/Pods-Instagram_Firestore_App_Clone.release.xcconfig"; sourceTree = "<group>"; };
 		927BC41650A22EE561FAF9C5 /* Pods_Instagram_Firestore_App_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram_Firestore_App_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				0F5326862610627C0061D92E /* Extensions.swift */,
+				0FF63A44262C036000972E24 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -139,6 +146,7 @@
 			children = (
 				0F9D00402618564000465BC3 /* ImageUploader.swift */,
 				0F9D00432618565000465BC3 /* AuthService.swift */,
+				0FF63A41262C032200972E24 /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -178,6 +186,7 @@
 		0F5F9B9E26073A1C003705B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0FF63A47262C05CD00972E24 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -339,12 +348,15 @@
 				0F53268B26106BF50061D92E /* AuthenticationViewModel.swift in Sources */,
 				0F5F9B852607399C003705B0 /* AppDelegate.swift in Sources */,
 				0F5F9BA426073C2C003705B0 /* FeedController.swift in Sources */,
+				0FF63A48262C05CD00972E24 /* User.swift in Sources */,
 				0F5F9BB026073C5A003705B0 /* ProfileController.swift in Sources */,
+				0FF63A45262C036000972E24 /* Constants.swift in Sources */,
 				0F5326872610627C0061D92E /* Extensions.swift in Sources */,
 				0F5F9BA126073AAF003705B0 /* MainTabController.swift in Sources */,
 				0F5F9BAD26073C53003705B0 /* NotificationsController.swift in Sources */,
 				0F9D00412618564000465BC3 /* ImageUploader.swift in Sources */,
 				0F9D00442618565000465BC3 /* AuthService.swift in Sources */,
+				0FF63A42262C032200972E24 /* UserService.swift in Sources */,
 				0F8BDAFA2622D15E005E7D35 /* ProfileCell.swift in Sources */,
 				0F53267F26104C820061D92E /* RegistrationController.swift in Sources */,
 				0F5F9B872607399C003705B0 /* SceneDelegate.swift in Sources */,

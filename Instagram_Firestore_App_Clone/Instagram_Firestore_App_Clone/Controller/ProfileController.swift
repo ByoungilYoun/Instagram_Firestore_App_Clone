@@ -11,10 +11,17 @@ class ProfileController : UICollectionViewController {
   
   //MARK: - Properties
   
+  var user : User? {
+    didSet {
+      navigationItem.title = user?.username
+    }
+  }
+  
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     configureCollectionView()
+    fetchUser()
   }
   
   //MARK: -  Helpers
@@ -22,6 +29,13 @@ class ProfileController : UICollectionViewController {
     collectionView.backgroundColor = .white
     collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.identifier)
     collectionView.register(ProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileHeader.identifier)
+  }
+  
+  //MARK: - API
+  func fetchUser() {
+    UserService.fetchUser { user in
+      self.user = user
+    }
   }
 }
 
