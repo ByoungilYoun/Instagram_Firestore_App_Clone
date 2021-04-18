@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol AuthenticationDelegate : class {
+  func authenticateDidComplete()
+}
+
 class LoginController : UIViewController {
   //MARK: - Properties
   
@@ -61,6 +65,8 @@ class LoginController : UIViewController {
   
   // LoginViewModel 생성
   private var viewModel = LoginViewModel()
+  
+  weak var delegate : AuthenticationDelegate?
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
@@ -120,6 +126,7 @@ class LoginController : UIViewController {
   //MARK: - @objc func
   @objc func handleShowSignUp() {
     let controller = RegistrationController()
+    controller.delegate = delegate
     navigationController?.pushViewController(controller, animated: true)
   }
   
@@ -140,8 +147,7 @@ class LoginController : UIViewController {
         print("Debug : Failed to log user in \(error.localizedDescription)")
         return
       }
-      
-      self.dismiss(animated: true, completion: nil)
+      self.delegate?.authenticateDidComplete()
     }
   }
 }

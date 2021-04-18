@@ -11,32 +11,29 @@ class ProfileController : UICollectionViewController {
   
   //MARK: - Properties
   
-  var user : User? {
-    didSet {
-      collectionView.reloadData()
-    }
-  }
+  private var user : User
   
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     configureCollectionView()
-    fetchUser()
+  }
+  
+  init(user : User) {
+    self.user = user
+    super.init(collectionViewLayout: UICollectionViewFlowLayout())
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
   
   //MARK: -  Helpers
   func configureCollectionView() {
+    navigationItem.title = user.username
     collectionView.backgroundColor = .white
     collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.identifier)
     collectionView.register(ProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileHeader.identifier)
-  }
-  
-  //MARK: - API
-  func fetchUser() {
-    UserService.fetchUser { user in
-      self.user = user
-      self.navigationItem.title = user.username
-    }
   }
 }
 
@@ -54,11 +51,7 @@ extension ProfileController  {
   // 헤더 뷰 생성
   override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileHeader.identifier, for: indexPath) as! ProfileHeader
-    
-    if let user = user {
-      header.viewModel = ProfileHeaderViewModel(user: user)
-    }
-    
+    header.viewModel = ProfileHeaderViewModel(user: user)
     return header
   }
 }
