@@ -12,10 +12,9 @@ class UserCell : UITableViewCell {
   //MARK: - Properties
   static let identifier = "UserCell"
   
-  var user : User? {
+  var viewModel : UserCellViewModel? {
     didSet {
-      usernameLabel.text = user?.username
-      fullnameLabel.text = user?.fullname
+      configure()
     }
   }
   
@@ -34,6 +33,7 @@ class UserCell : UITableViewCell {
     let label = UILabel()
     label.font = UIFont.boldSystemFont(ofSize: 16)
     label.text = "venom"
+    label.textColor = .black
     return label
   }()
   
@@ -49,7 +49,7 @@ class UserCell : UITableViewCell {
   //MARK: - Lifecycle
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    configureUI()
+    setUI()
   }
   
   required init?(coder: NSCoder) {
@@ -57,7 +57,8 @@ class UserCell : UITableViewCell {
   }
   
   //MARK: - Function
-  private func configureUI() {
+  private func setUI() {
+    backgroundColor = .white
     [profileImageView].forEach {
       addSubview($0)
     }
@@ -79,5 +80,13 @@ class UserCell : UITableViewCell {
       $0.leading.equalTo(profileImageView.snp.trailing).offset(8)
       $0.centerY.equalTo(self.snp.centerY)
     }
+  }
+  
+  func configure(){
+    guard let viewModel = viewModel else {return}
+    
+    profileImageView.sd_setImage(with: viewModel.profileImageUrl)
+    usernameLabel.text = viewModel.username
+    fullnameLabel.text = viewModel.fullname
   }
 }
