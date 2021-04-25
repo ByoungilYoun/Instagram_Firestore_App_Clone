@@ -8,6 +8,8 @@
 import Firebase
 
 struct UserService {
+  
+  // 유저 한명 가져오는 함수
   static func fetchUser(completion : @escaping(User) -> Void) {
     guard let uid = Auth.auth().currentUser?.uid else {return}
     COLLECTION_USERS.document(uid).getDocument { snapshot, error in
@@ -15,6 +17,16 @@ struct UserService {
       
       let user = User(dictionary: dictionary)
       completion(user)
+    }
+  }
+  
+  // 모든 유저 가져오는 함수
+  static func fetchUsers(completion : @escaping([User]) -> Void) {
+    COLLECTION_USERS.getDocuments { (snapshot, error) in
+      guard let snapshot = snapshot else {return}
+      
+      let users = snapshot.documents.map( {User(dictionary: $0.data())}) //document 의 data 를 map 해준다.
+      completion(users)
     }
   }
 }

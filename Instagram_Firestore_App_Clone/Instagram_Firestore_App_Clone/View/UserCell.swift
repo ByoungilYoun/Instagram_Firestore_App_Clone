@@ -12,6 +12,13 @@ class UserCell : UITableViewCell {
   //MARK: - Properties
   static let identifier = "UserCell"
   
+  var user : User? {
+    didSet {
+      usernameLabel.text = user?.username
+      fullnameLabel.text = user?.fullname
+    }
+  }
+  
   // 사용자 프로파일 동그란 이미지 뷰
   private let profileImageView : UIImageView = {
     let iv = UIImageView()
