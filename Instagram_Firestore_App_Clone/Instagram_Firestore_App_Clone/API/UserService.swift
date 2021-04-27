@@ -32,7 +32,7 @@ struct UserService {
     }
   }
   
-  
+  // follow 할때 요청하는 함수
   static func follow(uid : String, completion : @escaping (FirestoreCompletion)) {
     guard let currentUid = Auth.auth().currentUser?.uid else {return}
     COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).setData([:]) { error in
@@ -40,10 +40,21 @@ struct UserService {
     }
   }
   
+  // unfollow 할때 요청하는 함수
   static func unfollow(uid : String, completion : @escaping (FirestoreCompletion)){
     guard let currentUid = Auth.auth().currentUser?.uid else {return}
     COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).delete { error in
       COLLECTION_FOLLOWERS.document(uid).collection("user-followers").document(currentUid).delete(completion: completion)
+    }
+  }
+  
+  // 팔로잉 하고있는지 안하고있는지 확인하는 함수
+   static func checkIfUserIsFollowed(uid : String, completion : @escaping(Bool) -> Void) {
+    guard let currentUid = Auth.auth().currentUser?.uid else {return}
+    
+    COLLECTION_FOLLOWING.document(currentUid).collection("user-following").document(uid).getDocument { snapshot, error in
+      guard let isFollowed = snapshot?.exists else {return}
+      completion(isFollowed)
     }
   }
 }

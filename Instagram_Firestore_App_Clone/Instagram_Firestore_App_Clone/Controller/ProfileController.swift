@@ -17,6 +17,7 @@ class ProfileController : UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureCollectionView()
+    checkIfUserIsFollowed()
   }
   
   init(user : User) {
@@ -34,6 +35,14 @@ class ProfileController : UICollectionViewController {
     collectionView.backgroundColor = .white
     collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.identifier)
     collectionView.register(ProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProfileHeader.identifier)
+  }
+  
+  // 해당 유저가 팔로우를 하는지 판별하는 함수
+  func checkIfUserIsFollowed() {
+    UserService.checkIfUserIsFollowed(uid: user.uid) { isFollowed in
+      self.user.isFollowed = isFollowed
+      self.collectionView.reloadData()
+    }
   }
 }
 
