@@ -18,6 +18,7 @@ class ProfileController : UICollectionViewController {
     super.viewDidLoad()
     configureCollectionView()
     checkIfUserIsFollowed()
+    fetchUserStats()
   }
   
   init(user : User) {
@@ -42,6 +43,15 @@ class ProfileController : UICollectionViewController {
     UserService.checkIfUserIsFollowed(uid: user.uid) { isFollowed in
       self.user.isFollowed = isFollowed
       self.collectionView.reloadData()
+    }
+  }
+  
+  // 팔로잉, 팔로워 명수 가져오는 함수
+  func fetchUserStats() {
+    UserService.fetchUserStats(uid: user.uid) { stats in
+      self.user.stats = stats
+      self.collectionView.reloadData()
+      print("Debug : stats \(stats)")
     }
   }
 }

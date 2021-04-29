@@ -57,4 +57,16 @@ struct UserService {
       completion(isFollowed)
     }
   }
+  
+  // 팔로잉이랑 팔로워 명수 가져오는 함수 
+  static func fetchUserStats(uid : String, completion : @escaping(UserStats) -> Void) {
+    COLLECTION_FOLLOWERS.document(uid).collection("user-followers").getDocuments { (snapshot, _) in
+      let followers = snapshot?.documents.count ?? 0
+      
+      COLLECTION_FOLLOWING.document(uid).collection("user-following").getDocuments { (snapshot, _) in
+        let following = snapshot?.documents.count ?? 0
+        completion(UserStats(followers: followers, following: following))
+      }
+    }
+  }
 }
