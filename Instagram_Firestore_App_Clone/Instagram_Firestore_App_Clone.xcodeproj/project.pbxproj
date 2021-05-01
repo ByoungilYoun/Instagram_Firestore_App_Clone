@@ -29,6 +29,8 @@
 		0F5F9BB726074A31003705B0 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F9BB626074A31003705B0 /* FeedCell.swift */; };
 		0F8BDAFA2622D15E005E7D35 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BDAF92622D15E005E7D35 /* ProfileCell.swift */; };
 		0F8BDAFD2622D168005E7D35 /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8BDAFC2622D168005E7D35 /* ProfileHeader.swift */; };
+		0F94E6F5263DADC200C1FFAC /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94E6F4263DADC200C1FFAC /* UploadPostController.swift */; };
+		0F94E6F7263DB06900C1FFAC /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F94E6F6263DB06900C1FFAC /* InputTextView.swift */; };
 		0F9D00412618564000465BC3 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D00402618564000465BC3 /* ImageUploader.swift */; };
 		0F9D00442618565000465BC3 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9D00432618565000465BC3 /* AuthService.swift */; };
 		0FC67E9126353849001424EB /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC67E9026353849001424EB /* UserCell.swift */; };
@@ -64,6 +66,8 @@
 		0F5F9BB626074A31003705B0 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		0F8BDAF92622D15E005E7D35 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		0F8BDAFC2622D168005E7D35 /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
+		0F94E6F4263DADC200C1FFAC /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
+		0F94E6F6263DB06900C1FFAC /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		0F9D00402618564000465BC3 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		0F9D00432618565000465BC3 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		0FC67E9026353849001424EB /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			children = (
 				0F5326862610627C0061D92E /* Extensions.swift */,
 				0FF63A44262C036000972E24 /* Constants.swift */,
+				0F94E6F6263DB06900C1FFAC /* InputTextView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				0F5F9BA926073C4B003705B0 /* ImageSelectorController.swift */,
 				0F5F9BAC26073C53003705B0 /* NotificationsController.swift */,
 				0F5F9BAF26073C5A003705B0 /* ProfileController.swift */,
+				0F94E6F4263DADC200C1FFAC /* UploadPostController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -349,6 +355,7 @@
 			files = (
 				0F5326832610601B0061D92E /* CustomTextField.swift in Sources */,
 				0F8BDAFD2622D168005E7D35 /* ProfileHeader.swift in Sources */,
+				0F94E6F5263DADC200C1FFAC /* UploadPostController.swift in Sources */,
 				0F53267B26104C780061D92E /* LoginController.swift in Sources */,
 				0F5F9B892607399C003705B0 /* ViewController.swift in Sources */,
 				0F5F9BB726074A31003705B0 /* FeedCell.swift in Sources */,
@@ -361,6 +368,7 @@
 				0FF63A48262C05CD00972E24 /* User.swift in Sources */,
 				0F5F9BB026073C5A003705B0 /* ProfileController.swift in Sources */,
 				0FF63A4B262C0D7400972E24 /* ProfileHeaderViewModel.swift in Sources */,
+				0F94E6F7263DB06900C1FFAC /* InputTextView.swift in Sources */,
 				0FF63A45262C036000972E24 /* Constants.swift in Sources */,
 				0F5326872610627C0061D92E /* Extensions.swift in Sources */,
 				0FC67E942635479D001424EB /* UserCellViewModel.swift in Sources */,

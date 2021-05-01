@@ -12,6 +12,6 @@ class ImageSelectorController : UIViewController {
   //MARK: - Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .systemRed
+    view.backgroundColor = .white
   }
 }

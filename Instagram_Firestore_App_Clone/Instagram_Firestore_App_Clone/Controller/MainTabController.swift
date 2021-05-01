@@ -55,9 +55,13 @@ class MainTabController : UITabBarController {
   // YPImagePicker 를 통해 사진을 선택하고 Next 를 눌렀을때 적용되는 함수
   func didFinishPickingMedia(_ picker : YPImagePicker) {
     picker.didFinishPicking { items, _ in
-      picker.dismiss(animated: true) {
+      picker.dismiss(animated: false) {
         guard let selectedImage = items.singlePhoto?.image else {return}
-        print("Debug : selected image is \(selectedImage)")
+        
+        let controller = UploadPostController()
+        let navi = UINavigationController(rootViewController: controller)
+        navi.modalPresentationStyle = .fullScreen
+        self.present(navi, animated: false, completion: nil)
       }
     }
   }
@@ -93,7 +97,7 @@ extension MainTabController : AuthenticationDelegate {
   //MARK: - extension UITabbarControllerDelegate
 extension MainTabController : UITabBarControllerDelegate {
   func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-    // 인덱스를 통해 뷰컨을 컨트롤 한다. 
+    
     let index = viewControllers?.firstIndex(of: viewController)
     
     if index == 2 {
