@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import YPImagePicker
 
 class MainTabController : UITabBarController {
   
@@ -27,6 +28,7 @@ class MainTabController : UITabBarController {
   //MARK: - Helpers
   func configureViewControllers(withUser user : User) {
     view.backgroundColor = .white
+    self.delegate = self
     
     let layout = UICollectionViewFlowLayout()
     let feed = templateNavigationController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: FeedController(collectionViewLayout: layout))
@@ -50,6 +52,15 @@ class MainTabController : UITabBarController {
     return navi
   }
   
+  // YPImagePicker 를 통해 사진을 선택하고 Next 를 눌렀을때 적용되는 함수
+  func didFinishPickingMedia(_ picker : YPImagePicker) {
+    picker.didFinishPicking { items, _ in
+      picker.dismiss(animated: true) {
+        guard let selectedImage = items.singlePhoto?.image else {return}
+        print("Debug : selected image is \(selectedImage)")
+      }
+    }
+  }
   
   //MARK: - API
   func fetchUser() {
@@ -76,5 +87,31 @@ extension MainTabController : AuthenticationDelegate {
   func authenticateDidComplete() {
     fetchUser()
     self.dismiss(animated: true, completion: nil)
+  }
+}
+
+  //MARK: - extension UITabbarControllerDelegate
+extension MainTabController : UITabBarControllerDelegate {
+  func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    // 인덱스를 통해 뷰컨을 컨트롤 한다. 
+    let index = viewControllers?.firstIndex(of: viewController)
+    
+    if index == 2 {
+      var config = YPImagePickerConfiguration() // ypImagePickerConfiguration 으로 세팅들을 해준다.
+      config.library.mediaType = .photo
+      config.shouldSaveNewPicturesToAlbum = false
+      config.startOnScreen = .library
+      config.screens = [.library]
+      config.hidesStatusBar = false
+      config.hidesBottomBar = false
+      config.library.maxNumberOfItems = 1
+      
+      let picker = YPImagePicker(configuration: config)
+      picker.modalPresentationStyle = .fullScreen
+      present(picker, animated: true, completion: nil)
+      
+      didFinishPickingMedia(picker)
+    }
+    return true
   }
 }
