@@ -18,8 +18,12 @@ class UploadPostController : UIViewController {
     return iv
   }()
   
-  private let captionTextView : UITextView = {
-    let tv = UITextView()
+  private lazy var captionTextView : InputTextView = {
+    let tv = InputTextView()
+    tv.placeholderText = "Enter caption.."
+    tv.textColor = .black
+    tv.font = UIFont.systemFont(ofSize: 16)
+    tv.delegate = self
     return tv
   }()
   
@@ -73,6 +77,13 @@ class UploadPostController : UIViewController {
     }
   }
   
+  // 글자수 100자 제한하는 함수
+  func checkMaxLength(_ textView : UITextView) {
+    if (textView.text.count) > 100 {
+      textView.deleteBackward()
+    }
+  }
+  
   //MARK: - @objc func
   @objc func didTapCancel() {
     dismiss(animated: true, completion: nil)
@@ -80,5 +91,14 @@ class UploadPostController : UIViewController {
   
   @objc func didTapDone() {
     print("Debug : Share post here...")
+  }
+}
+
+//MARK: - extension UITextViewDelegate
+extension UploadPostController : UITextViewDelegate {
+  func textViewDidChange(_ textView: UITextView) {
+    checkMaxLength(textView)
+    let count = textView.text.count
+    characterCountLabel.text = "\(count) / 100"
   }
 }
