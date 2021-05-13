@@ -12,6 +12,13 @@ class FeedCell : UICollectionViewCell {
   static let identifier = "FeedCell"
   
   //MARK: - Properties
+  
+  var viewModel : PostViewModel? {
+    didSet {
+      configure()
+    }
+  }
+  
   private let profileImageView : UIImageView = {
     let iv = UIImageView()
     iv.contentMode = .scaleAspectFill
@@ -62,7 +69,6 @@ class FeedCell : UICollectionViewCell {
   
   private let likesLabel : UILabel = {
     let label = UILabel()
-    label.text = "1 like"
     label.font = UIFont.boldSystemFont(ofSize: 13)
     label.textColor = .black
     return label
@@ -70,7 +76,6 @@ class FeedCell : UICollectionViewCell {
   
   private let captionLabel : UILabel = {
     let label = UILabel()
-    label.text = "Some test caption for now..."
     label.font = UIFont.systemFont(ofSize: 14)
     label.textColor = .black
     return label
@@ -150,6 +155,13 @@ class FeedCell : UICollectionViewCell {
       $0.width.equalTo(120)
       $0.height.equalTo(50)
     }
+  }
+  
+  func configure() {
+    guard let viewModel = viewModel else {return}
+    captionLabel.text = viewModel.caption
+    postImageView.sd_setImage(with: viewModel.imageUrl)
+    likesLabel.text = String(viewModel.likes) + "likes"
   }
   
   //MARK: - objc func
