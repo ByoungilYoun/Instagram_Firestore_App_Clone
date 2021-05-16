@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0ACE9E2651808E005C7E3A /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0ACE9D2651808E005C7E3A /* CommentInputAccessoryView.swift */; };
 		0F19CB7F26184DFD00D6250E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F19CB7E26184DFC00D6250E /* GoogleService-Info.plist */; };
 		0F37C5C92651663F007071FB /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F37C5C82651663F007071FB /* CommentController.swift */; };
 		0F53267B26104C780061D92E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F53267A26104C780061D92E /* LoginController.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F0ACE9D2651808E005C7E3A /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
 		0F19CB7E26184DFC00D6250E /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0F37C5C82651663F007071FB /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		0F53267A26104C780061D92E /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				0F5326822610601B0061D92E /* CustomTextField.swift */,
 				0FC67E9026353849001424EB /* UserCell.swift */,
 				0FB3ACB8265168B300146465 /* CommentCell.swift */,
+				0F0ACE9D2651808E005C7E3A /* CommentInputAccessoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				0F5F9BA426073C2C003705B0 /* FeedController.swift in Sources */,
 				0FF63A48262C05CD00972E24 /* User.swift in Sources */,
 				0F5F9BB026073C5A003705B0 /* ProfileController.swift in Sources */,
+				0F0ACE9E2651808E005C7E3A /* CommentInputAccessoryView.swift in Sources */,
 				0FF63A4B262C0D7400972E24 /* ProfileHeaderViewModel.swift in Sources */,
 				0F94E6F7263DB06900C1FFAC /* InputTextView.swift in Sources */,
 				0FF63A45262C036000972E24 /* Constants.swift in Sources */,

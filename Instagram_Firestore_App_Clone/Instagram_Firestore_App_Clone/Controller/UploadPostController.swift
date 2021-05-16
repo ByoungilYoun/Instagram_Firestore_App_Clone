@@ -38,6 +38,7 @@ class UploadPostController : UIViewController {
     tv.textColor = .black
     tv.font = UIFont.systemFont(ofSize: 16)
     tv.delegate = self
+    tv.placeholderShouldCenter = false
     return tv
   }()
   

@@ -23,6 +23,22 @@ class InputTextView : UITextView {
     return label
   }()
   
+  var placeholderShouldCenter = true {
+    didSet {
+      if placeholderShouldCenter {
+        placeholderLabel.snp.remakeConstraints {
+          $0.leading.equalToSuperview().offset(8)
+          $0.trailing.equalToSuperview()
+          $0.centerY.equalToSuperview()
+          }
+      } else {
+        placeholderLabel.snp.remakeConstraints {
+          $0.top.equalToSuperview().offset(6)
+          $0.leading.equalToSuperview().offset(8)
+        }
+      }
+    }
+  }
   //MARK: - Lifecycle
   override init(frame: CGRect, textContainer: NSTextContainer?) {
     super.init(frame: frame, textContainer: textContainer)
