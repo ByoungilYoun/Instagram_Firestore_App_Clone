@@ -35,7 +35,12 @@ struct PostService {
     query.getDocuments { snapshot, error in
       guard let documents = snapshot?.documents else {return}
       
-      let post = documents.map({ Post(postId: $0.documentID, dictionary: $0.data())})
+      var post = documents.map({ Post(postId: $0.documentID, dictionary: $0.data())})
+      
+      post.sort { (post1, post2) -> Bool in
+        return post1.timestamp.seconds > post2.timestamp.seconds
+      }
+      
       completion(post)
     }
   }
