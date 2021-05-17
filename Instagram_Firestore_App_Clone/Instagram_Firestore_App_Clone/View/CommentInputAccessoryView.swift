@@ -7,15 +7,23 @@
 
 import UIKit
 
+protocol CommentInputAccessoryViewDelegate : AnyObject {
+  func inputView(_ inputView : CommentInputAccessoryView, wantsToUploadComment comment : String)
+}
+
 class CommentInputAccessoryView : UIView {
   
   //MARK: - Properties
+  
+  weak var delegate : CommentInputAccessoryViewDelegate?
+  
   private let commentTextView : InputTextView = {
     let tv = InputTextView()
     tv.placeholderText = "Enter comment..."
     tv.font = UIFont.systemFont(ofSize: 15)
     tv.isScrollEnabled = false
-    tv.placeholderShouldCenter = true 
+    tv.placeholderShouldCenter = true
+    tv.textColor = .black
     return tv
   }()
   
@@ -43,6 +51,7 @@ class CommentInputAccessoryView : UIView {
   //MARK: - Functions
   private func setUI() {
     autoresizingMask = .flexibleHeight
+    backgroundColor = .white // 뒷배경 white 를 줌으로써 커멘트가 accessoryview 뒤에 있어도 안보인다.
     
     [commentTextView, postButton, divider].forEach {
       addSubview($0)
@@ -74,8 +83,14 @@ class CommentInputAccessoryView : UIView {
     return .zero
   }
   
+  // 글자 없애는 함수 
+  func clearCommentTextView() {
+    commentTextView.text = nil
+    commentTextView.placeholderLabel.isHidden = false
+  }
+  
   //MARK: - @objc func
   @objc func handlePostTapped() {
-    
+    delegate?.inputView(self, wantsToUploadComment: commentTextView.text)
   }
 }
