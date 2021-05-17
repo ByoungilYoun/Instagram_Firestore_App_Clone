@@ -13,6 +13,8 @@ class CommentController : UICollectionViewController  {
   
   private let post : Post
   
+  private var comments = [Comment]()
+  
   private lazy var commentInputView : CommentInputAccessoryView = {
     let frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50)
     let cv = CommentInputAccessoryView(frame: frame)
@@ -33,6 +35,7 @@ class CommentController : UICollectionViewController  {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureCollectionView()
+    fetchComments()
   }
   
   override var inputAccessoryView: UIView? {
@@ -64,12 +67,19 @@ class CommentController : UICollectionViewController  {
     collectionView.alwaysBounceVertical = true // 스크롤 하면 키보드 내려가게 하는 기능
     collectionView.keyboardDismissMode = .interactive // 스크롤 하면 키보드 내려가게 하는 기능
   }
+  
+  func fetchComments() {
+    CommentService.fetchComments(postID: post.postId) { comments in
+      self.comments = comments
+      self.collectionView.reloadData()
+    }
+  }
 }
 
   //MARK: - UICollectionViewDataSource
 extension CommentController {
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 2
+    return comments.count
   }
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
